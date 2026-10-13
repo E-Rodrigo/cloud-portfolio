@@ -125,6 +125,10 @@ I'm always open to connecting with other technology professionals, exchanging kn
   </a>
 </p>
 
+<img width="1600" height="734" alt="WhatsApp Image 2026-10-13 at 11 30 53 AM" src="https://github.com/user-attachments/assets/07b02136-cdb5-44bf-9cad-20f8de26f21a" />
+<img width="1600" height="766" alt="WhatsApp Image 2026-10-13 at 11 21 59 AM" src="https://github.com/user-attachments/assets/c1248738-152e-4386-aef6-af9dc51a5b07" />
+<img width="1600" height="772" alt="WhatsApp Image 2026-10-13 at 11 14 14 AM" src="https://github.com/user-attachments/assets/fbc9c9fc-2b13-4350-8ec4-44020ed44109" />
+
 ---
 
 <p align="center">
