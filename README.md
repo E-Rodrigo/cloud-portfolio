@@ -120,7 +120,7 @@ I also value technical documentation and English communication as essential skil
 I'm always open to connecting with other technology professionals, exchanging knowledge, and learning from different approaches to infrastructure and cloud engineering.
 
 <p align="center">
-  <a href="www.linkedin.com/in/enzo-rodrigoo">
+  <a href="www.linkedin.com/in/e-rodrigoo">
     <img src="https://img.shields.io/badge/LinkedIn-Let's%20Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn" />
   </a>
 </p>
