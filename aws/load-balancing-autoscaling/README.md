@@ -161,19 +161,6 @@ The intended scaling behavior was to start with two instances and allow the grou
 
 Store your actual screenshots in the `screenshots/` directory.
 
-Suggested evidence:
-
-| Screenshot | What it demonstrates |
-|---|---|
-| `01-load-balancer.png` | Application Load Balancer configuration. |
-| `02-target-group-healthy.png` | Healthy registered targets. |
-| `03-auto-scaling-group.png` | Auto Scaling capacity and configuration. |
-| `04-cloudwatch-alarms.png` | CloudWatch monitoring and scaling alarms. |
-| `05-scaling-test.png` | Additional instances after the load test, if observed. |
-| `06-web-application.png` | Application accessed through the load balancer. |
-
-*Only include screenshots that you actually captured. Evidence of additional instances should show the result observed during your test.*
-
 ## 🔐 Security Considerations
 
 The architecture separates the public load balancer from the private application instances.
@@ -224,13 +211,10 @@ aws/load-balancing-autoscaling/
 ├── architecture/
 │   └── aws-load-balancing-autoscaling.png
 ├── screenshots/
-│   ├── 01-load-balancer.png
-│   ├── 02-target-group-healthy.png
-│   ├── 03-auto-scaling-group.png
-│   ├── 04-cloudwatch-alarms.png
-│   ├── 05-scaling-test.png
-│   └── 06-web-application.png
-└── scripts/
+│   ├── 01-load-balancer.jpeg
+│   ├── 02-execution.jpeg
+│   ├── 03-auto-scaling-group.jpeg
+└── ...
 ```
 
 Create only the files and directories you actually use. The structure above is a suggested organization.
