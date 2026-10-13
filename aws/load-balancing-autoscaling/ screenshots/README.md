@@ -1,4 +1,4 @@
-# Capturas de Tela
+# Screenshots
 
 ![Load Balancer](./01-load-balancer.jpeg)
 ![Execution](./02-execution.jpeg)
