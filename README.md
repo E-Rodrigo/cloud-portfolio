@@ -1,205 +1,136 @@
-# ☁️ Cloud Portfolio | Cloud Engineering & DevOps
+# ☁️ Cloud Portfolio
 
 <p align="center">
-  <img src="https://img.shields.io/badge/AWS-Cloud%20Computing-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS Cloud Computing" />
-  <img src="https://img.shields.io/badge/Focus-Cloud%20%26%20DevOps-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Cloud and DevOps" />
-  <img src="https://img.shields.io/badge/Status-Always%20Learning-22C55E?style=for-the-badge" alt="Always Learning" />
+  <img src="https://img.shields.io/badge/CLOUD-ENGINEERING-0A84FF?style=for-the-badge&logo=icloud&logoColor=white" alt="Cloud Engineering" />
+  <img src="https://img.shields.io/badge/FOCUS-AWS%20%7C%20DEVOPS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS and DevOps" />
+  <img src="https://img.shields.io/badge/MINDSET-CONTINUOUS%20LEARNING-8B5CF6?style=for-the-badge&logo=github&logoColor=white" alt="Continuous Learning" />
 </p>
 
 <p align="center">
-  <strong>Building, breaking, understanding, and improving cloud infrastructure.</strong>
+  <strong>Building knowledge. Exploring technology. Engineering better solutions.</strong>
   <br />
-  A hands-on portfolio documenting my journey in Cloud Computing, AWS, Infrastructure, Security, Automation, and DevOps.
+  A practical journey through cloud computing, infrastructure, automation, and DevOps.
 </p>
 
 ---
 
-## 👨‍💻 About This Portfolio
+## 👋 Welcome to My Cloud Journey
 
-Welcome! This repository is where I document my practical experience, technical experiments, and continuous learning in cloud technologies.
+I'm a Computer Science graduate building my path in **Cloud Computing and DevOps**, with a focus on understanding how modern infrastructure is designed, deployed, monitored, secured, and improved.
 
-My approach goes beyond simply completing labs. I aim to understand **how each component works, why architectural decisions matter, and how to build infrastructure that is scalable, secure, resilient, and cost-efficient.**
+This repository is my technical portfolio: a place to document hands-on labs, personal projects, architecture diagrams, troubleshooting experiences, scripts, and the lessons learned along the way.
 
-Here, you'll find practical implementations, architecture diagrams, technical documentation, troubleshooting notes, scripts, and evidence of the results obtained.
+I believe that learning technology means going beyond knowing which buttons to click. It means understanding **why a solution works, how its components interact, what can go wrong, and how it can be improved.**
 
-### 🎯 What I'm Working Towards
+Here, every project is an opportunity to turn theory into practical knowledge.
 
-- ☁️ **Cloud Engineering:** Building and understanding cloud infrastructure using AWS.
-- ⚙️ **DevOps & Automation:** Exploring infrastructure as code, scripting, containers, and deployment workflows.
-- 🔐 **Cloud Security:** Learning identity management, permissions, network security, and security best practices.
-- 📈 **Reliability & Monitoring:** Understanding availability, scalability, observability, and performance.
-- 🌍 **Continuous Growth:** Developing the technical and English communication skills needed to work in international technology teams.
+## 🧭 Explore My Portfolio
 
----
-
-## 🧭 Explore the Portfolio
-
-| Area | What You'll Find |
-|---|---|
-| ☁️ AWS Infrastructure | EC2, VPC, networking, load balancing, and Auto Scaling |
-| 🔐 Security & IAM | Identity, permissions, access control, and security configurations |
-| 📊 Monitoring | CloudWatch metrics, alarms, health checks, and troubleshooting |
-| ⚙️ Automation | AWS CLI, scripts, Infrastructure as Code, and repeatable deployments |
-| 🐧 Systems & Networking | Linux, network fundamentals, connectivity, and diagnostics |
-| 📚 Documentation | Architecture diagrams, implementation guides, technical decisions, and lessons learned |
-
----
-
-## ⭐ Featured Project
-
-### 01. AWS Load Balancing & Auto Scaling
-
-**Designing a scalable and highly available web application architecture.**
-
-> Objective: Distribute incoming HTTP traffic across multiple EC2 instances and automatically adjust infrastructure capacity in response to workload changes.
-
-**Architecture overview**
-
-The solution uses an Application Load Balancer in public subnets to distribute incoming traffic to EC2 instances running in private subnets across two Availability Zones.
-
-An EC2 Auto Scaling group manages the instances, while Amazon CloudWatch monitors CPU utilization and supports automatic scaling decisions.
-
-**Key components**
-
-- **Application Load Balancer (ALB):** Distributes incoming application traffic.
-- **Amazon EC2:** Runs the web application instances.
-- **EC2 Auto Scaling:** Maintains capacity and scales the instance fleet.
-- **Launch Templates & AMIs:** Standardize instance configuration.
-- **Amazon CloudWatch:** Monitors metrics and scaling alarms.
-- **Amazon VPC:** Provides network isolation through public and private subnets.
-
-**Scaling configuration**
-
-| Setting | Configuration |
-|---|---|
-| Minimum capacity | 2 instances |
-| Desired capacity | 2 instances |
-| Maximum capacity | 4 instances |
-| Scaling metric | Average CPU utilization |
-| Target utilization | 50% |
-| Availability | 2 Availability Zones |
-
-**What I practiced**
-
-- Creating a reusable Amazon Machine Image.
-- Configuring an Application Load Balancer and target group.
-- Deploying EC2 instances through a Launch Template.
-- Configuring an Auto Scaling group across private subnets.
-- Validating target health and application access.
-- Triggering additional capacity through load testing.
-- Monitoring infrastructure behavior through CloudWatch alarms.
-
-**Evidence & Documentation**
-
-- [ ] Architecture diagram
-- [ ] Load balancer and target group screenshots
-- [ ] Auto Scaling configuration and instance screenshots
-- [ ] CloudWatch alarm and scaling test evidence
-- [ ] Implementation notes and lessons learned
-
-Project status: **Lab completed; documentation and evidence are being organized.**
-
-*This project was implemented in a learning environment. The infrastructure is not necessarily running continuously.*
-
----
+<table>
+  <tr>
+    <td width="50%">
+      <h3>☁️ Cloud Infrastructure</h3>
+      Exploring AWS services, compute resources, networking, availability, and scalable architectures.
+    </td>
+    <td width="50%">
+      <h3>⚙️ Automation & DevOps</h3>
+      Learning to automate infrastructure and workflows through scripts, CLI tools, and Infrastructure as Code.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🔐 Security & Networking</h3>
+      Practicing IAM, access control, network segmentation, security groups, and troubleshooting.
+    </td>
+    <td width="50%">
+      <h3>📊 Monitoring & Reliability</h3>
+      Exploring metrics, alarms, health checks, fault tolerance, and infrastructure behavior under load.
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ Technologies & Tools
 
-### Cloud
-
-<p>
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=FF9900" alt="AWS" />
-  <img src="https://img.shields.io/badge/EC2-FF9900?style=flat-square&logo=amazonec2&logoColor=white" alt="Amazon EC2" />
-  <img src="https://img.shields.io/badge/VPC-8C4FFF?style=flat-square&logo=amazonaws&logoColor=white" alt="Amazon VPC" />
-  <img src="https://img.shields.io/badge/CloudWatch-FF4F8B?style=flat-square&logo=amazonaws&logoColor=white" alt="Amazon CloudWatch" />
-  <img src="https://img.shields.io/badge/IAM-232F3E?style=flat-square&logo=amazonaws&logoColor=white" alt="AWS IAM" />
+<p align="center">
+  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=FF9900" alt="Amazon AWS" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
 </p>
 
-### Systems, Networking & Automation
+**AWS services explored:** Amazon EC2, VPC, Application Load Balancer, EC2 Auto Scaling, IAM, and CloudWatch.
 
-<p>
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
-  <img src="https://img.shields.io/badge/AWS_CLI-232F3E?style=flat-square&logo=amazonaws&logoColor=white" alt="AWS CLI" />
-</p>
+**Areas I'm developing:** Infrastructure as Code, Terraform, Docker, CI/CD, cloud security, and automation.
 
-*This section reflects the technologies represented in my current learning and project documentation. Additional tools will be added as I gain practical experience with them.*
+*The technologies listed here represent my current learning and practical exploration. This portfolio will evolve as I build and document additional projects.*
 
----
+## 🚀 Featured Projects
 
-## 📂 Repository Structure
+### 01 · AWS Load Balancing & Auto Scaling
 
-```text
-cloud-portfolio/
-├── README.md
-│
-├── aws/
-│   ├── load-balancing-autoscaling/
-│   │   ├── README.md
-│   │   ├── architecture/
-│   │   ├── screenshots/
-│   │   └── scripts/
-│   │
-│   ├── networking/
-│   └── security-iam/
-│
-├── linux/
-│   └── monitoring/
-│
-└── projects/
-```
+**Building a scalable and resilient web application architecture.**
 
-*The structure will evolve as new projects, experiments, and documentation are added.*
+Implemented an architecture using an Application Load Balancer and EC2 Auto Scaling to distribute incoming traffic and automatically adjust capacity based on CPU utilization.
+
+**Key concepts:** High availability · Load balancing · Horizontal scaling · CloudWatch monitoring · VPC networking
+
+📂 Explore: `aws/load-balancing-autoscaling/`
+
+*Project documentation, architecture diagrams, and implementation evidence will be available in the corresponding project folder.*
 
 ---
 
-## 🧠 My Approach to Learning
+### 🔭 More Projects Coming
 
-I believe technical growth comes from understanding, not just execution.
+This portfolio will grow as I explore new technologies and build more complete solutions.
 
-For each project, I aim to document:
+Planned areas include:
 
-- **The problem:** What am I trying to solve?
-- **The architecture:** Which components are involved, and why?
-- **The implementation:** How was the solution configured?
-- **The validation:** How did I verify that it worked?
-- **The troubleshooting:** What failed, and how did I investigate it?
-- **The improvement:** What would I change for a production environment?
+- AWS networking and security architectures
+- Infrastructure provisioning with Terraform
+- Docker and containerized applications
+- CI/CD and deployment automation
+- Monitoring, logging, and troubleshooting
 
-My goal is to turn practical exercises into reusable technical knowledge and progressively build more independent, real-world projects.
+## 🧠 How I Approach Every Project
 
----
+I aim to document more than the final result. Each project should explain the engineering behind the implementation.
 
-## 🚀 What's Next?
+| Stage | What matters |
+|---|---|
+| 🎯 Objective | Define the problem and the expected outcome. |
+| 🏗️ Architecture | Understand the components and their relationships. |
+| 🔧 Implementation | Configure the solution and document the important steps. |
+| 🧪 Validation | Test the behavior and collect evidence. |
+| 🔍 Troubleshooting | Investigate unexpected results and understand their causes. |
+| 💡 Improvement | Identify limitations and opportunities for a better solution. |
 
-My learning roadmap includes:
+My goal is to build a portfolio that reflects not only what I've practiced, but also how I think, investigate, and solve technical problems.
 
-- [ ] Expand AWS networking and security projects.
-- [ ] Practice AWS CLI and infrastructure automation.
-- [ ] Build infrastructure using Terraform.
-- [ ] Containerize an application using Docker.
-- [ ] Explore CI/CD pipelines and deployment automation.
-- [ ] Improve monitoring, logging, and incident troubleshooting.
-- [ ] Develop more complete end-to-end cloud projects.
+## 📈 Continuous Growth
 
-This roadmap will evolve as I progress and identify new areas to explore.
+Technology never stands still, and neither should learning.
 
----
+I'm continuously developing my knowledge of cloud infrastructure, strengthening my technical fundamentals, improving my troubleshooting skills, and building the foundations for a career in Cloud Engineering and DevOps.
+
+I also value technical documentation and English communication as essential skills for collaborating with technology teams around the world.
 
 ## 🤝 Let's Connect
 
-I'm always interested in learning from other professionals, exchanging ideas, and discussing cloud architecture, infrastructure, and DevOps.
+I'm always open to connecting with other technology professionals, exchanging knowledge, and learning from different approaches to infrastructure and cloud engineering.
 
-- 💼 **LinkedIn:** [Connect with me](www.linkedin.com/in/enzo-rodrigoo)
-- 🐙 **GitHub:** Explore my repositories and follow my progress.
+<p align="center">
+  <a href="www.linkedin.com/in/enzo-rodrigoo">
+    <img src="https://img.shields.io/badge/LinkedIn-Let's%20Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn" />
+  </a>
+</p>
 
 ---
 
 <p align="center">
-  <strong>Build. Learn. Improve. Repeat.</strong>
-  <br />
-  <em>Every project is an opportunity to understand technology a little better.</em>
+  <strong>BUILD · LEARN · UNDERSTAND · IMPROVE</strong>
+  <br /><br />
+  <em>Every experiment brings a new insight. Every project is a step forward.</em>
   <br /><br />
   ⭐ Thanks for visiting my portfolio!
 </p>
