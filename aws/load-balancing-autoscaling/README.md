@@ -211,9 +211,15 @@ aws/load-balancing-autoscaling/
 ├── architecture/
 │   └── aws-load-balancing-autoscaling.png
 ├── screenshots/
-│   ├── 01-load-balancer.jpeg
-│   ├── 02-execution.jpeg
-│   ├── 03-auto-scaling-group.jpeg
+│   ├── 01-load-balancer-configuration.jpeg
+│   ├── 02-launch-template-configuration.jpeg
+│   ├── 03-auto-scaling-group-configuration.jpeg
+│   ├── 04-initial-ec2-instances.jpeg
+│   ├── 05-load-test-execution.jpeg
+│   ├── 06-auto-scaling-scale-out-event.jpeg
+│   ├── 07-cloudwatch-alarm-during-load-test.jpeg
+│   ├── 08-cloudwatch-alarm-normalized.jpeg
+│   └── 09-ec2-instance-launch-activity.jpeg
 └── ...
 ```
 
@@ -234,3 +240,150 @@ Create only the files and directories you actually use. The structure above is a
   <br />
   <em>Documenting the journey from cloud fundamentals to practical engineering.</em>
 </p>
+
+## Additional Implementation: AWS Auto Scaling with Linux and AWS CLI
+
+### Overview
+
+This implementation explores a command-line-driven approach to provisioning an EC2-based web application and configuring an automatically scalable infrastructure on AWS.
+
+The initial compute instance is created using the AWS CLI and configured through a user data script. An Amazon Machine Image (AMI) is then generated from the instance and reused as the base image for the Auto Scaling environment.
+
+The remaining infrastructure is configured through the AWS Management Console, combining command-line provisioning with visual configuration and operational validation.
+
+### Implementation Workflow
+
+#### 1. Provision an EC2 Instance Using AWS CLI
+
+The `aws ec2 run-instances` command is used to launch a Linux EC2 instance with the required AMI, instance type, subnet, security group, and user data configuration.
+
+Example command structure:
+
+```bash
+aws ec2 run-instances \
+  --key-name KEYNAME \
+  --instance-type t3.micro \
+  --image-id AMIID \
+  --user-data file:///home/ec2-user/UserData.txt \
+  --security-group-ids HTTPACCESS \
+  --subnet-id SUBNETID \
+  --associate-public-ip-address \
+  --tag-specifications \
+  'ResourceType=instance,Tags=[{Key=Name,Value=WebServer}]' \
+  --output text \
+  --query 'Instances[*].InstanceId'
+```
+
+The command returns the instance ID, which is used in subsequent operations.
+
+The user data script automates the installation and initial configuration of the web application, including the load testing functionality.
+
+#### 2. Validate Instance Initialization
+
+After provisioning, the instance state is checked using the AWS CLI:
+
+```bash
+aws ec2 wait instance-running \
+  --instance-ids NEW-INSTANCE-ID
+```
+
+The public DNS name can then be retrieved to verify application accessibility.
+
+```bash
+aws ec2 describe-instances \
+  --instance-id NEW-INSTANCE-ID \
+  --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName' \
+  --output text
+```
+
+The application must be allowed sufficient time to complete its initialization before validation.
+
+#### 3. Create a Custom AMI
+
+The running web server instance is used to create a reusable image:
+
+```bash
+aws ec2 create-image \
+  --name WebServerAMI \
+  --instance-id NEW-INSTANCE-ID
+```
+
+The resulting AMI becomes the base image for instances launched by the Auto Scaling group.
+
+This approach supports repeatable provisioning by preserving the configured application environment.
+
+#### 4. Configure the Application Load Balancer
+
+An Application Load Balancer is configured across two public subnets in separate Availability Zones.
+
+A target group is created to register the application instances, with the health check configured to use the application's `/index.php` endpoint.
+
+The load balancer provides a single DNS entry point and forwards requests to healthy registered targets.
+
+#### 5. Create the Launch Template and Auto Scaling Group
+
+A Launch Template is configured using the custom AMI, the `t3.micro` instance type, and the appropriate security group.
+
+The Auto Scaling group is deployed across two private subnets in separate Availability Zones and associated with the load balancer's target group.
+
+The scaling configuration is defined as follows:
+
+| Parameter | Value |
+|---|---|
+| Minimum capacity | 2 instances |
+| Desired capacity | 2 instances |
+| Maximum capacity | 4 instances |
+| Scaling metric | Average CPU utilization |
+| Target value | 50% |
+
+Elastic Load Balancing health checks are enabled to help the Auto Scaling group identify instances that are not healthy enough to serve application traffic.
+
+#### 6. Validate Automatic Scaling
+
+The web application is accessed through the load balancer DNS name. The application's load testing functionality is then used to increase CPU utilization.
+
+The Auto Scaling group's Activity tab is monitored to observe scaling activities and determine whether additional instances are launched in response to increased demand.
+
+The validation process includes:
+
+- Confirming that the initial EC2 instances become healthy.
+- Verifying that the target group reports healthy targets.
+- Accessing the web application through the load balancer.
+- Triggering the application's load testing functionality.
+- Reviewing Auto Scaling activity and instance capacity changes.
+
+The scaling policy targets an average CPU utilization of 50%. Actual scaling behavior depends on metric evaluation, policy evaluation periods, instance initialization, and other AWS service behavior.
+
+### Key Technical Concepts
+
+- **AWS CLI:** Command-line interaction with AWS services.
+- **EC2 provisioning:** Launching instances with explicit configuration parameters.
+- **AMI creation:** Capturing a reusable image of a configured instance.
+- **Launch Templates:** Standardizing the configuration used to provision instances.
+- **Application Load Balancing:** Distributing requests across healthy application targets.
+- **Horizontal scaling:** Adjusting the number of EC2 instances based on demand.
+- **Health checks:** Evaluating target health before routing application traffic.
+- **CloudWatch monitoring:** Observing performance metrics associated with scaling decisions.
+
+### Potential Improvements
+
+Future iterations could extend this implementation through:
+
+- Terraform-based infrastructure provisioning.
+- Automation of resource creation using AWS CLI scripts.
+- HTTPS configuration using AWS Certificate Manager.
+- More detailed CloudWatch dashboards and operational alerts.
+- Additional validation of security group rules and network access.
+- Cost analysis and evaluation of scaling behavior under different workloads.
+
+These improvements represent potential future work rather than features implemented in this exercise.
+
+### Environment and Security Notes
+
+This implementation was performed in a learning environment. Resource names, instance types, and configuration values may differ in other environments.
+
+The commands above use placeholders for environment-specific values. Replace them with the appropriate values only when executing in an authorized AWS environment.
+
+Never commit AWS credentials, private keys, access tokens, or other sensitive information to a public repository.
+
+Resources should be reviewed and terminated when no longer required to avoid unnecessary costs.
