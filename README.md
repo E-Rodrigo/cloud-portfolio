@@ -1,4 +1,3 @@
-# cloud-portfolio
 # ☁️ Cloud Portfolio | Cloud Engineering & DevOps
 
 <p align="center">
