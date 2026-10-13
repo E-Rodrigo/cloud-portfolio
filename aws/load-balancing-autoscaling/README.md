@@ -1,140 +1,252 @@
-# ☁️ Cloud Portfolio
+# ☁️ AWS Load Balancing & Auto Scaling
 
 <p align="center">
-  <img src="https://img.shields.io/badge/CLOUD-ENGINEERING-0A84FF?style=for-the-badge&logo=icloud&logoColor=white" alt="Cloud Engineering" />
-  <img src="https://img.shields.io/badge/FOCUS-AWS%20%7C%20DEVOPS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS and DevOps" />
-  <img src="https://img.shields.io/badge/MINDSET-CONTINUOUS%20LEARNING-8B5CF6?style=for-the-badge&logo=github&logoColor=white" alt="Continuous Learning" />
+  <img src="https://img.shields.io/badge/AWS-Cloud%20Architecture-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS Cloud Architecture" />
+  <img src="https://img.shields.io/badge/EC2-Auto%20Scaling-ED7100?style=for-the-badge&logo=amazonec2&logoColor=white" alt="EC2 Auto Scaling" />
+  <img src="https://img.shields.io/badge/Status-Lab%20Completed-22C55E?style=for-the-badge" alt="Lab Completed" />
 </p>
 
 <p align="center">
-  <strong>Building knowledge. Exploring technology. Engineering better solutions.</strong>
+  <strong>Designing scalable, resilient, and highly available cloud infrastructure.</strong>
   <br />
-  A practical journey through cloud computing, infrastructure, automation, and DevOps.
+  A hands-on AWS project exploring load balancing, horizontal scaling, private networking, and infrastructure monitoring.
 </p>
 
 ---
 
-## 👋 Welcome to My Cloud Journey
+## 📌 Project Overview
 
-I'm a Computer Science graduate building my path in **Cloud Computing and DevOps**, with a focus on understanding how modern infrastructure is designed, deployed, monitored, secured, and improved.
+This project explores how to build a scalable web application architecture using AWS services.
 
-This repository is my technical portfolio: a place to document hands-on labs, personal projects, architecture diagrams, troubleshooting experiences, scripts, and the lessons learned along the way.
+The objective was to distribute incoming HTTP traffic across multiple Amazon EC2 instances and automatically adjust computing capacity in response to workload changes.
 
-I believe that learning technology means going beyond knowing which buttons to click. It means understanding **why a solution works, how its components interact, what can go wrong, and how it can be improved.**
+The architecture combines an **Application Load Balancer (ALB)**, an **EC2 Auto Scaling group**, private subnets across two Availability Zones, and Amazon CloudWatch monitoring.
 
-Here, every project is an opportunity to turn theory into practical knowledge.
+Rather than relying on a single web server, this design allows the application infrastructure to expand as demand increases, while maintaining a defined minimum capacity.
 
-## 🧭 Explore My Portfolio
+> **Project type:** Hands-on cloud lab  
+> **Cloud provider:** Amazon Web Services (AWS)  
+> **Primary focus:** Load balancing, horizontal scaling, networking, and monitoring
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3>☁️ Cloud Infrastructure</h3>
-      Exploring AWS services, compute resources, networking, availability, and scalable architectures.
-    </td>
-    <td width="50%">
-      <h3>⚙️ Automation & DevOps</h3>
-      Learning to automate infrastructure and workflows through scripts, CLI tools, and Infrastructure as Code.
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3>🔐 Security & Networking</h3>
-      Practicing IAM, access control, network segmentation, security groups, and troubleshooting.
-    </td>
-    <td width="50%">
-      <h3>📊 Monitoring & Reliability</h3>
-      Exploring metrics, alarms, health checks, fault tolerance, and infrastructure behavior under load.
-    </td>
-  </tr>
-</table>
+## 🎯 Objectives
 
-## 🛠️ Technologies & Tools
+- Configure an Application Load Balancer to distribute HTTP traffic.
+- Create an Amazon Machine Image (AMI) for consistent instance provisioning.
+- Define a Launch Template for EC2 instances.
+- Deploy an Auto Scaling group across two Availability Zones.
+- Place application instances in private subnets.
+- Configure target tracking based on average CPU utilization.
+- Monitor scaling behavior using Amazon CloudWatch.
+- Validate application access and target health.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=FF9900" alt="Amazon AWS" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-</p>
+## 🏗️ Architecture
 
-**AWS services explored:** Amazon EC2, VPC, Application Load Balancer, EC2 Auto Scaling, IAM, and CloudWatch.
+### Architecture Design
 
-**Areas I'm developing:** Infrastructure as Code, Terraform, Docker, CI/CD, cloud security, and automation.
+The architecture separates public entry points from application compute resources.
 
-*The technologies listed here represent my current learning and practical exploration. This portfolio will evolve as I build and document additional projects.*
+Internet traffic reaches the Application Load Balancer through public subnets. The load balancer forwards requests to healthy EC2 instances running in private subnets across two Availability Zones.
 
-## 🚀 Featured Projects
+The Auto Scaling group manages the number of instances, while CloudWatch metrics and alarms support scaling decisions.
 
-### 01 · AWS Load Balancing & Auto Scaling
+**Architecture flow:**
 
-**Building a scalable and resilient web application architecture.**
+`Internet → Application Load Balancer → Target Group → EC2 Instances`
 
-Implemented an architecture using an Application Load Balancer and EC2 Auto Scaling to distribute incoming traffic and automatically adjust capacity based on CPU utilization.
+The Auto Scaling group manages the EC2 fleet, and CloudWatch monitors its performance.
 
-**Key concepts:** High availability · Load balancing · Horizontal scaling · CloudWatch monitoring · VPC networking
+### Architecture Diagram
 
-📂 Explore: `aws/load-balancing-autoscaling/`
+Add your architecture diagram to the project folder using the following path:
 
-*Project documentation, architecture diagrams, and implementation evidence will be available in the corresponding project folder.*
+`architecture/aws-load-balancing-autoscaling.png`
 
----
+Then display it here:
 
-### 🔭 More Projects Coming
+```markdown
+![AWS Load Balancing and Auto Scaling Architecture](architecture/aws-load-balancing-autoscaling.png)
+```
 
-This portfolio will grow as I explore new technologies and build more complete solutions.
+The diagram should show:
 
-Planned areas include:
+- An Application Load Balancer in public subnets.
+- Two Availability Zones.
+- Private subnets containing the EC2 application instances.
+- A target group connecting the load balancer to the instances.
+- An Auto Scaling group managing instance capacity.
+- CloudWatch monitoring and scaling metrics.
 
-- AWS networking and security architectures
-- Infrastructure provisioning with Terraform
-- Docker and containerized applications
-- CI/CD and deployment automation
-- Monitoring, logging, and troubleshooting
+## 🧰 AWS Services Used
 
-## 🧠 How I Approach Every Project
-
-I aim to document more than the final result. Each project should explain the engineering behind the implementation.
-
-| Stage | What matters |
+| Service | Purpose |
 |---|---|
-| 🎯 Objective | Define the problem and the expected outcome. |
-| 🏗️ Architecture | Understand the components and their relationships. |
-| 🔧 Implementation | Configure the solution and document the important steps. |
-| 🧪 Validation | Test the behavior and collect evidence. |
-| 🔍 Troubleshooting | Investigate unexpected results and understand their causes. |
-| 💡 Improvement | Identify limitations and opportunities for a better solution. |
+| Amazon EC2 | Hosts the web application instances. |
+| Amazon Machine Image (AMI) | Provides a reusable image for launching instances. |
+| Launch Template | Defines the configuration used to provision EC2 instances. |
+| Application Load Balancer | Distributes incoming HTTP requests across registered targets. |
+| EC2 Auto Scaling | Automatically adjusts the number of EC2 instances. |
+| Amazon CloudWatch | Monitors metrics and scaling alarms. |
+| Amazon VPC | Provides network isolation and subnet configuration. |
+| Security Groups | Control permitted network traffic to AWS resources. |
 
-My goal is to build a portfolio that reflects not only what I've practiced, but also how I think, investigate, and solve technical problems.
+## ⚙️ Implementation
 
-## 📈 Continuous Growth
+### 1. Create an Amazon Machine Image
 
-Technology never stands still, and neither should learning.
+Created an AMI from the existing web server instance to preserve its configured environment and use it as the base image for additional application instances.
 
-I'm continuously developing my knowledge of cloud infrastructure, strengthening my technical fundamentals, improving my troubleshooting skills, and building the foundations for a career in Cloud Engineering and DevOps.
+**Why it matters:** A reusable image helps standardize instance provisioning and reduces the need to configure each server independently.
 
-I also value technical documentation and English communication as essential skills for collaborating with technology teams around the world.
+### 2. Configure the Application Load Balancer
 
-## 🤝 Let's Connect
+Created an internet-facing Application Load Balancer across two public subnets in separate Availability Zones.
 
-I'm always open to connecting with other technology professionals, exchanging knowledge, and learning from different approaches to infrastructure and cloud engineering.
+Configured an HTTP listener and a target group to route incoming requests to the application instances.
 
-<p align="center">
-  <a href="www.linkedin.com/in/enzo-rodrigoo">
-    <img src="https://img.shields.io/badge/LinkedIn-Let's%20Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn" />
-  </a>
-</p>
+**Why it matters:** The load balancer provides a single entry point for the application and routes requests to healthy registered targets.
 
-<img width="1600" height="734" alt="WhatsApp Image 2026-10-13 at 11 30 53 AM" src="https://github.com/user-attachments/assets/07b02136-cdb5-44bf-9cad-20f8de26f21a" />
-<img width="1600" height="766" alt="WhatsApp Image 2026-10-13 at 11 21 59 AM" src="https://github.com/user-attachments/assets/c1248738-152e-4386-aef6-af9dc51a5b07" />
-<img width="1600" height="772" alt="WhatsApp Image 2026-10-13 at 11 14 14 AM" src="https://github.com/user-attachments/assets/fbc9c9fc-2b13-4350-8ec4-44020ed44109" />
+### 3. Create a Launch Template
+
+Configured a Launch Template using the custom AMI, the `t3.micro` instance type, and the appropriate security group.
+
+**Why it matters:** Launch Templates provide a consistent configuration for instances created by Auto Scaling.
+
+### 4. Configure the Auto Scaling Group
+
+Created an Auto Scaling group using the Launch Template and selected private subnets across two Availability Zones.
+
+The group was associated with the load balancer's target group, with Elastic Load Balancing health checks enabled.
+
+**Why it matters:** The Auto Scaling group manages the application fleet while keeping the instances in the intended network locations.
+
+### 5. Define the Scaling Policy
+
+Configured a target tracking scaling policy based on average CPU utilization.
+
+| Parameter | Value |
+|---|---:|
+| Minimum capacity | 2 instances |
+| Desired capacity | 2 instances |
+| Maximum capacity | 4 instances |
+| Target average CPU utilization | 50% |
+| Scaling policy | Target tracking |
+
+The policy allows Auto Scaling to adjust the number of instances according to demand, subject to the configured capacity limits.
+
+**Important:** The 50% target is a scaling policy target, not a guarantee that CPU utilization will remain exactly at 50% at all times.
+
+### 6. Monitor Scaling Behavior
+
+Used Amazon CloudWatch to inspect CPU utilization and the alarms associated with the target tracking policy.
+
+A load test was triggered through the web application to increase CPU demand and observe the Auto Scaling group's response.
+
+**Why it matters:** Monitoring helps validate the relationship between workload, performance metrics, alarms, and infrastructure scaling.
+
+## 🧪 Validation & Results
+
+The lab validation focused on three areas.
+
+| Validation | Expected behavior |
+|---|---|
+| Application access | The web application is reachable through the load balancer's DNS name. |
+| Target health | The registered EC2 instances become healthy in the target group. |
+| Auto Scaling | Increased workload can trigger additional instances, within the configured capacity limits. |
+
+During the lab, the application was accessed through the load balancer, target health was checked, and a load test was used to exercise the scaling configuration.
+
+The intended scaling behavior was to start with two instances and allow the group to expand to a maximum of four instances when demand justified additional capacity.
+
+### Evidence
+
+Store your actual screenshots in the `screenshots/` directory.
+
+Suggested evidence:
+
+| Screenshot | What it demonstrates |
+|---|---|
+| `01-load-balancer.png` | Application Load Balancer configuration. |
+| `02-target-group-healthy.png` | Healthy registered targets. |
+| `03-auto-scaling-group.png` | Auto Scaling capacity and configuration. |
+| `04-cloudwatch-alarms.png` | CloudWatch monitoring and scaling alarms. |
+| `05-scaling-test.png` | Additional instances after the load test, if observed. |
+| `06-web-application.png` | Application accessed through the load balancer. |
+
+*Only include screenshots that you actually captured. Evidence of additional instances should show the result observed during your test.*
+
+## 🔐 Security Considerations
+
+The architecture separates the public load balancer from the private application instances.
+
+For a production implementation, I would further validate the following:
+
+- Restrict application instance inbound traffic to the load balancer's security group.
+- Avoid assigning public IP addresses to application instances unless specifically required.
+- Permit only the necessary inbound and outbound network traffic.
+- Use IAM roles instead of storing long-lived AWS credentials on instances.
+- Consider HTTPS with an appropriate TLS certificate.
+- Review CloudWatch monitoring, logging, and alerting requirements.
+- Evaluate capacity limits, availability requirements, and cost implications.
+
+These are production considerations, not claims that every item was implemented in this lab.
+
+## 💡 Key Takeaways
+
+This project helped reinforce several cloud engineering concepts:
+
+- **Load balancing:** Distributing application traffic across multiple compute instances.
+- **Horizontal scaling:** Increasing or decreasing the number of instances rather than relying exclusively on a larger server.
+- **High availability:** Distributing resources across Availability Zones to reduce dependence on a single zone.
+- **Private networking:** Separating application compute resources from the public entry point.
+- **Health checks:** Using target health to determine whether instances are suitable for receiving traffic.
+- **Monitoring-driven scaling:** Connecting infrastructure metrics to automated capacity decisions.
+- **Infrastructure standardization:** Using AMIs and Launch Templates to provision instances consistently.
+
+## 🚀 Potential Improvements
+
+The following are possible future enhancements and were not part of the completed lab scope:
+
+- Rebuild the architecture using Terraform.
+- Configure HTTPS with AWS Certificate Manager.
+- Add an AWS WAF web access control layer.
+- Create more detailed CloudWatch dashboards and custom alarms.
+- Evaluate load testing with a dedicated testing tool.
+- Review scaling cooldowns, instance warm-up, and cost optimization.
+- Document network flows and security group rules in greater detail.
+
+These improvements would help extend the exercise into a more complete infrastructure project.
+
+## 📂 Project Structure
+
+```text
+aws/load-balancing-autoscaling/
+├── README.md
+├── architecture/
+│   └── aws-load-balancing-autoscaling.png
+├── screenshots/
+│   ├── 01-load-balancer.png
+│   ├── 02-target-group-healthy.png
+│   ├── 03-auto-scaling-group.png
+│   ├── 04-cloudwatch-alarms.png
+│   ├── 05-scaling-test.png
+│   └── 06-web-application.png
+└── scripts/
+```
+
+Create only the files and directories you actually use. The structure above is a suggested organization.
+
+## 📚 References
+
+- [Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
+- [Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)
+- [Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
+- [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+- [Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 ---
 
 <p align="center">
-  <strong>BUILD · LEARN · UNDERSTAND · IMPROVE</strong>
-  <br /><br />
-  <em>Every experiment brings a new insight. Every project is a step forward.</em>
-  <br /><br />
-  ⭐ Thanks for visiting my portfolio!
+  <strong>Build. Learn. Understand. Improve.</strong>
+  <br />
+  <em>Documenting the journey from cloud fundamentals to practical engineering.</em>
 </p>
